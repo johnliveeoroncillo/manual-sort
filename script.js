@@ -1,7 +1,7 @@
-const max = 100;
+const max = 50;
 const height = 10;
 const width = 20;
-
+const start = performance.now();
 function create() {
     console.log('CREATE');
     const data = [];
@@ -42,6 +42,9 @@ async function initGraphics(arr, passed) {
     });
 
     if (passed) {
+
+        const end = performance.now();
+
         for (let index = 0; index < arr.length; index++) {
             const current = arr[index];
             const docs = document.getElementsByClassName('bars');
@@ -60,23 +63,25 @@ async function initGraphics(arr, passed) {
             docs[i].style.background = '';
         }
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 100));
 
         for (let i = 0; i < docs.length; i++) {
             docs[i].style.background = 'green';
         }
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 100));
 
         for (let i = 0; i < docs.length; i++) {
             docs[i].style.background = '';
         }
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 100));
 
         for (let i = 0; i < docs.length; i++) {
             docs[i].style.background = 'green';
         }
+
+        console.log('It took ' + ((end - start)/1000) + ' seconds');
     }
 }
 
@@ -105,11 +110,11 @@ async function run(array) {
             }
         }
 
-        await new Promise(resolve => setTimeout(resolve, 5));
+        await new Promise(resolve => setTimeout(resolve, 500));
         
         initGraphics(array);
 
-        await new Promise(resolve => setTimeout(resolve, 5));
+        await new Promise(resolve => setTimeout(resolve, 500));
     }
     console.log('SORTED', array);
     const passed = check(array);

@@ -110,11 +110,11 @@ async function run(array) {
             }
         }
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 5));
         
         initGraphics(array);
 
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 5));
     }
     console.log('SORTED', array);
     const passed = check(array);
